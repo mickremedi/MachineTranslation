@@ -27,29 +27,11 @@ class ModelEmbeddings(nn.Module):
                               See vocab.py for documentation.
         """
         super(ModelEmbeddings, self).__init__()
-        self.embed_size = embed_size
-
-        # default values
-        self.source = None
-        self.target = None
 
         src_pad_token_idx = vocab.src['<pad>']
         tgt_pad_token_idx = vocab.tgt['<pad>']
 
-        # Note:
-        #     1. `vocab` object contains two vocabularies:
-        #            `vocab.src` for source
-        #            `vocab.tgt` for target
-        #     2. You can get the length of a specific vocabulary by running:
-        #             `len(vocab.<specific_vocabulary>)`
-        #     3. Remember to include the padding token for the specific vocabulary
-        #        when creating your Embedding.
-        #
-        # Use the following docs to properly initialize these variables:
-        #     Embedding Layer:
-        #         https://pytorch.org/docs/stable/nn.html#torch.nn.Embedding
-
+        self.embed_size = embed_size
         self.source = nn.Embedding(len(vocab.src), embed_size, padding_idx=src_pad_token_idx)
         self.target = nn.Embedding(len(vocab.tgt), embed_size, padding_idx=tgt_pad_token_idx)
 
-        # END YOUR CODE

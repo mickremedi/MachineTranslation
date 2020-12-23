@@ -30,14 +30,10 @@ def pad_sents(sents: List[List[int]], pad_token: int) -> List[List[int]]:
     """
     sents_padded = []
 
-    # YOUR CODE HERE (~6 Lines)
-
     max_len = len(max(sents, key=lambda x: len(x)))
 
     for sent in sents:
         sents_padded.append(sent + [pad_token for _ in range(max_len - len(sent))])
-
-    # END YOUR CODE
 
     return sents_padded
 
